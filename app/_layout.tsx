@@ -49,6 +49,7 @@ const RootLayout = () => {
                 name="profile/[id]"
                 options={{ headerShown: false }}
             />
+            <Stack.Screen name="success" options={{ headerShown: false }} />
         </Stack>
     );
 };

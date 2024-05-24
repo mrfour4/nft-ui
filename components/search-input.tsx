@@ -3,11 +3,7 @@ import { Feather, FontAwesome5 } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { TextInput, TouchableOpacity, View } from "react-native";
 
-type SearchInputProps = {
-    initialQuery: string;
-};
-
-export const SearchInput = ({ initialQuery }: SearchInputProps) => {
+export const SearchInput = () => {
     const [text, setText] = useState("");
 
     return (

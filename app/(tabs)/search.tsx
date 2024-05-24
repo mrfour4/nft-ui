@@ -83,7 +83,7 @@ const Search = () => {
                         <Text className="font-pbold text-white text-4xl mb-6">
                             Search
                         </Text>
-                        <SearchInput initialQuery="" />
+                        <SearchInput />
 
                         {/* TODO: get data and fill in component */}
                         <View className="w-full flex-1 -mb-6">
