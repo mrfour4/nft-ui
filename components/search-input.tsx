@@ -1,3 +1,4 @@
+import { color } from "@/constants";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { TextInput, TouchableOpacity, View } from "react-native";
@@ -12,13 +13,13 @@ export const SearchInput = ({ initialQuery }: SearchInputProps) => {
     return (
         <View className="flex-row items-center space-x-4 w-full h-14 px-4 bg-gray-700 rounded-xl">
             <TouchableOpacity>
-                <Feather name="search" size={20} color="#AAB8C2" />
+                <Feather name="search" size={20} color={color.lightGray} />
             </TouchableOpacity>
 
             <TextInput
                 className="flex-1 mt-0.5 font-pmedium text-base text-white"
                 placeholder="Search your NFT..."
-                placeholderTextColor="#AAB8C2"
+                placeholderTextColor={color.lightGray}
                 value={text}
                 onChangeText={setText}
             />

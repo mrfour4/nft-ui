@@ -1,13 +1,7 @@
+import { color } from "@/constants";
 import { AntDesign, Entypo, FontAwesome5 } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import React, { ReactNode } from "react";
-
-type TabIconProps = {
-    icon: ReactNode;
-    color: string;
-    name: string;
-    focused: boolean;
-};
+import React from "react";
 
 const TabsLayout = () => {
     return (
@@ -15,10 +9,10 @@ const TabsLayout = () => {
             <Tabs
                 screenOptions={{
                     tabBarShowLabel: false,
-                    tabBarActiveTintColor: "#1D9BF0",
-                    tabBarInactiveTintColor: "#AAB8C2",
+                    tabBarActiveTintColor: color.primary,
+                    tabBarInactiveTintColor: color.lightGray,
                     tabBarStyle: {
-                        backgroundColor: "#253341",
+                        backgroundColor: color.darkGray,
                         borderTopWidth: 1,
                         borderTopColor: "#232533",
                         height: 70,

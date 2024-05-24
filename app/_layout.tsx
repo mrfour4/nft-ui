@@ -37,6 +37,18 @@ const RootLayout = () => {
         <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen
+                name="collection/[id]"
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="nft-item/[id]"
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="profile/[id]"
+                options={{ headerShown: false }}
+            />
         </Stack>
     );
 };

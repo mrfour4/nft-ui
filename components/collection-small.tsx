@@ -5,63 +5,56 @@ import { router } from "expo-router";
 import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
-type NFTCardProps = {
+type CollectionSmallProps = {
     id: number;
-    nft: {
-        title: string;
-        liked: number;
-        price: number;
-        chain: string;
-    };
     creator: {
         name: string;
         popular: boolean;
     };
+    nft: {
+        title: string;
+        liked: number;
+    };
 };
-const NFTCard = ({ id, nft, creator }: NFTCardProps) => {
+const CollectionSmall = ({ id, creator, nft }: CollectionSmallProps) => {
     const [liked, setLiked] = useState(false);
 
     return (
-        <View className="rounded-xl bg-gray-700 flex-1 max-w-[48%]">
-            <TouchableOpacity onPress={() => router.push(`/nft-item/${id}`)}>
+        <View key={id} className="bg-secondary rounded-xl flex-1 max-w-[48%]">
+            <TouchableOpacity onPress={() => router.push(`/collection/${id}`)}>
                 <Image
-                    source={images.nft}
-                    className="w-full  h-[120px] rounded-t-xl"
+                    source={images.nft2}
+                    className="w-full  h-[144px] rounded-t-xl"
                     resizeMode="cover"
                 />
             </TouchableOpacity>
-            <View className="px-3 pt-2">
-                <View className="flex-row items-center">
-                    <Text className=" font-pregular text-xs text-gray-100 mr-0.5">
+            <View className="p-3 pb-1">
+                <Text className="font-psemibold text-base text-white">
+                    {nft.title}
+                </Text>
+                <View className="flex-row items-center -mt-1">
+                    <Text className="font-plight text-gray-100 text-sm mr-1 mt-2">
                         {creator.name}
                     </Text>
+
                     {creator.popular && (
                         <MaterialIcons
                             name="verified"
                             size={12}
-                            color={color.primary}
+                            color="#1D9BF0"
                         />
                     )}
-                    <Text className="ml-auto font-semibold text-sm text-white  ">
-                        {nft.title}
-                    </Text>
-                </View>
-                <Text className="text-gray-100 text-xs mt-1">Buy Now</Text>
-                <View className="flex-row items-center -mt-2">
-                    <Text className="font-psemibold text-sm text-white mr-auto">
-                        {nft.price.toLocaleString("de-DE")} {nft.chain}
-                    </Text>
 
                     <TouchableOpacity
+                        className="ml-auto flex-row items-center p-3 pr-0"
                         onPress={() => setLiked(!liked)}
-                        className="flex-row  items-center p-3 pr-0"
                     >
                         {liked ? (
-                            <AntDesign name="heart" size={12} color="#ef4444" />
+                            <AntDesign name="heart" size={16} color="#ef4444" />
                         ) : (
                             <AntDesign
                                 name="hearto"
-                                size={12}
+                                size={16}
                                 color={color.lightGray}
                             />
                         )}
@@ -80,4 +73,4 @@ const NFTCard = ({ id, nft, creator }: NFTCardProps) => {
     );
 };
 
-export default NFTCard;
+export default CollectionSmall;

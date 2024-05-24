@@ -1,5 +1,5 @@
 import { Button } from "@/components/button";
-import { images } from "@/constants";
+import { color, images } from "@/constants";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
@@ -33,7 +33,7 @@ const App = () => {
                     />
                 </View>
             </ScrollView>
-            <StatusBar style="light" backgroundColor="#15202B" />
+            <StatusBar style="light" backgroundColor={color.dark} />
         </SafeAreaView>
     );
 };

@@ -21,34 +21,127 @@ const Home = () => {
         setRefreshing(false);
     };
 
+    const nftData = [
+        {
+            id: 1,
+            nft: {
+                title: "#3791",
+                liked: 8,
+                price: 0.638,
+                chain: "ETH",
+            },
+            creator: {
+                name: "Karafuru",
+                popular: true,
+            },
+        },
+        {
+            id: 2,
+            nft: {
+                title: "#3791",
+                liked: 8,
+                price: 0.638,
+                chain: "ETH",
+            },
+            creator: {
+                name: "Karafuru",
+                popular: true,
+            },
+        },
+        {
+            id: 3,
+            nft: {
+                title: "#3791",
+                liked: 8,
+                price: 0.638,
+                chain: "ETH",
+            },
+            creator: {
+                name: "Karafuru",
+                popular: true,
+            },
+        },
+        {
+            id: 4,
+            nft: {
+                title: "#3791",
+                liked: 8,
+                price: 0.638,
+                chain: "ETH",
+            },
+            creator: {
+                name: "Karafuru",
+                popular: true,
+            },
+        },
+        {
+            id: 5,
+            nft: {
+                title: "#3791",
+                liked: 8,
+                price: 0.638,
+                chain: "ETH",
+            },
+            creator: {
+                name: "Karafuru",
+                popular: true,
+            },
+        },
+    ];
+
+    const collectionData = [
+        {
+            id: "Art",
+            creator: {
+                name: "Mosu",
+                popular: true,
+            },
+            nft: {
+                floor: 0.04,
+                totalVolume: 0.9,
+                chain: "ETH",
+            },
+        },
+        {
+            id: "Gaming",
+            creator: {
+                name: "Mosu",
+                popular: false,
+            },
+            nft: {
+                floor: 0.04,
+                totalVolume: 0.9,
+                chain: "ETH",
+            },
+        },
+        {
+            id: "Music",
+            creator: {
+                name: "Mosu",
+                popular: true,
+            },
+            nft: {
+                floor: 0.04,
+                totalVolume: 0.9,
+                chain: "ETH",
+            },
+        },
+    ];
+
     return (
         <SafeAreaView className="bg-dark h-full">
             <FlatList
-                data={[
-                    { id: 1 },
-                    { id: 2 },
-                    { id: 3 },
-                    { id: 4 },
-                    { id: 5 },
-                    { id: 6 },
-                ]}
+                data={nftData}
                 renderItem={({ item }) => (
                     <NFTCard
                         key={item.id}
-                        nft={{
-                            title: "#3791",
-                            liked: 8,
-                            price: 0.638,
-                            chain: "ETH",
-                        }}
-                        creator={{
-                            name: "Karafuru",
-                            popular: true,
-                        }}
+                        id={item.id}
+                        creator={item.creator}
+                        nft={item.nft}
                     />
                 )}
                 ListHeaderComponent={() => (
-                    <View className=" space-y-9">
+                    <View>
                         <View className=" flex-row items-center justify-between">
                             {/* TODO: get data balance */}
 
@@ -74,50 +167,11 @@ const Home = () => {
                         <View className="w-full flex-1 pt-6 pb-8">
                             <TagsCategory />
 
-                            <ListCards
-                                cards={[
-                                    {
-                                        id: 1,
-                                        creator: {
-                                            name: "Mosu",
-                                            popular: true,
-                                        },
-                                        nft: {
-                                            floor: 0.04,
-                                            totalVolume: 0.9,
-                                            chain: "ETH",
-                                        },
-                                    },
-                                    {
-                                        id: 2,
-                                        creator: {
-                                            name: "Mosu",
-                                            popular: false,
-                                        },
-                                        nft: {
-                                            floor: 0.04,
-                                            totalVolume: 0.9,
-                                            chain: "ETH",
-                                        },
-                                    },
-                                    {
-                                        id: 3,
-                                        creator: {
-                                            name: "Mosu",
-                                            popular: true,
-                                        },
-                                        nft: {
-                                            floor: 0.04,
-                                            totalVolume: 0.9,
-                                            chain: "ETH",
-                                        },
-                                    },
-                                ]}
-                            />
+                            <ListCards cards={collectionData} />
                         </View>
 
                         <Text className="font-pbold text-white text-2xl">
-                            Trending Collections
+                            Trending NFT
                         </Text>
                     </View>
                 )}
@@ -139,10 +193,10 @@ const Home = () => {
                 }
                 numColumns={2}
                 columnWrapperStyle={{
-                    gap: 16,
+                    gap: 12,
                 }}
                 contentContainerStyle={{
-                    gap: 20,
+                    gap: 18,
                 }}
                 style={{
                     flex: 1,
