@@ -1,7 +1,7 @@
 import CollectionSmall from "@/components/collection-small";
 import NFTCard from "@/components/nft-card";
 import { color, images } from "@/constants";
-import { cn } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 import {
     AntDesign,
     FontAwesome5,
@@ -32,18 +32,6 @@ const formatAddress = (address: string) => {
     const end = address.slice(-4);
     const middle = address.length > 8 ? "..." : "";
     return `${start}${middle}${end}`;
-};
-
-const formatNumber = (num: number) => {
-    if (num >= 1000) {
-        let formatted = (num / 1000).toFixed(1);
-        if (formatted.endsWith(".0")) {
-            formatted = formatted.slice(0, -2);
-        }
-        formatted = formatted.replace(".", ",");
-        return formatted + "K";
-    }
-    return num.toString();
 };
 
 type ProfileProps = {

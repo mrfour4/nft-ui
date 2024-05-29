@@ -1,7 +1,7 @@
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import React, { useEffect } from "react";
-
+import { ThirdwebProvider } from "thirdweb/react";
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
@@ -34,23 +34,25 @@ const RootLayout = () => {
     }
 
     return (
-        <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen
-                name="collection/[id]"
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="nft-item/[id]"
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="profile/[id]"
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen name="success" options={{ headerShown: false }} />
-        </Stack>
+        <ThirdwebProvider>
+            <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="collection/[id]"
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="nft-item/[id]"
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name="profile/[id]"
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="success" options={{ headerShown: false }} />
+            </Stack>
+        </ThirdwebProvider>
     );
 };
 

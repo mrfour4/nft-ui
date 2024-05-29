@@ -5,5 +5,15 @@ const white = "#F5F8FA";
 const lightGray = "#AAB8C2";
 const darkGray = "#253341";
 const success = "#00CB6A";
+const danger = "#ef4444";
 
-export { dark, darkGray, lightGray, primary, secondary, success, white };
+export {
+    danger,
+    dark,
+    darkGray,
+    lightGray,
+    primary,
+    secondary,
+    success,
+    white,
+};

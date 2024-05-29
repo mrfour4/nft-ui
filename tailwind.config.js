@@ -18,7 +18,7 @@ module.exports = {
                     DEFAULT: "#F5F8FA",
                 },
                 success: "#00CB6A",
-                danger: "#F26666",
+                danger: "#ef4444",
             },
             fontFamily: {
                 pthin: ["Poppins-Thin", "sans-serif"],

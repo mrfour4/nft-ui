@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 
 type ButtonProps = {
     title: string;
@@ -28,9 +28,25 @@ export const Button = ({
             )}
             onPress={handlePress}
         >
-            <Text className={cn("font-pbold text-sm text-white", textStyle)}>
-                {title}
-            </Text>
+            {!isLoading ? (
+                <Text
+                    className={cn("font-pbold text-sm text-white", textStyle)}
+                >
+                    {title}
+                </Text>
+            ) : (
+                <View className="flex flex-row gap-x-2">
+                    <ActivityIndicator animating={isLoading} />
+                    <Text
+                        className={cn(
+                            "font-pbold text-sm text-white",
+                            textStyle
+                        )}
+                    >
+                        {title}
+                    </Text>
+                </View>
+            )}
         </TouchableOpacity>
     );
 };
