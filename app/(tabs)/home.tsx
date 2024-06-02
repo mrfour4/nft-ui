@@ -1,10 +1,9 @@
-import { BottomSheet } from "@/components/bottom-sheet";
 import { EmptyState } from "@/components/empty-state";
 import ListCards from "@/components/list-cards";
 import NFTCard from "@/components/nft-card";
 import TagsCategory from "@/components/tags-category";
 import { images } from "@/constants";
-import { chain, client, tokenAddress } from "@/constants/thirdweb";
+import { chain, client, collectionContract, renderIPFS, tokenAddress } from "@/constants/thirdweb";
 import { formatNumber } from "@/lib/utils";
 import { FontAwesome5 } from "@expo/vector-icons";
 import React, { useState } from "react";
@@ -17,7 +16,10 @@ import {
     View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useActiveAccount, useWalletBalance } from "thirdweb/react";
+import { useActiveAccount, useReadContract, useWalletBalance } from "thirdweb/react";
+
+import { BottomSheet } from "@/components/bottom-sheet";
+import { getNFTs } from "thirdweb/extensions/erc721";
 
 const Home = () => {
     // const {
@@ -44,12 +46,35 @@ const Home = () => {
     const [refreshing, setRefreshing] = useState(false);
     // // const { data, refetch } = useData(() => {});
 
-    // const nftsQuery = useReadContract(getNFTs, {
-    //     contract: collectionContract,
-    //     start: 0,
-    //     count: 10,
-    // });
-    // // console.log(nftsQuery);
+    const nftsQuery = useReadContract(getNFTs, {
+        contract: collectionContract,
+        start: 0,
+        count: 10,
+    });
+
+    console.log(nftsQuery);
+    
+    const data = nftsQuery.data?.map(item => {
+        const uri = item.metadata.image || item.metadata.uri
+        return {
+            id: item.id,
+            creator: {
+                name: item.owner || "",
+                popular: true
+            },
+            nft: {
+                title: item.metadata.name || "",
+                image: uri ?  renderIPFS(uri) : "",
+                chain: "MTH",
+                liked: 0,
+                price: item.metadata.supply as number
+            }
+        }
+    })
+
+    console.log(data);
+
+    // console.log(data);
 
     // const sendMutation = useSendAndConfirmTransaction();
 
@@ -267,16 +292,16 @@ const Home = () => {
 
     return (
         <SafeAreaView className="bg-dark h-full">
-            {/* <Button title="get" handlePress={createNFT} />
+           {/* <Button title="get" handlePress={createNFT} /> */}
             <Image
                 width={250}
                 height={250}
                 source={{
                     uri: renderIPFS(
-                        "ipfs://QmT5MdxT35obg26ToFTfdW3upTaj9NfzX7FGCApYg8av7T/IMG_3877.jpeg"
+                       "ipfs://QmT5MdxT35obg26ToFTfdW3upTaj9NfzX7FGCApYg8av7T/IMG_3877.jpeg"
                     ),
                 }}
-            /> */}
+            /> 
             <FlatList
                 data={nftData}
                 renderItem={({ item }) => (

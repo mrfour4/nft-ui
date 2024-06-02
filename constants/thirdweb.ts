@@ -1,7 +1,6 @@
-import { createThirdwebClient, defineChain, getContract } from "thirdweb";
+import { createThirdwebClient, getContract } from "thirdweb";
 import { bscTestnet } from "thirdweb/chains";
 import { resolveScheme } from "thirdweb/storage";
-import marketplaceAbi from "./marketplace-abi.json";
 const clientId = process.env.EXPO_PUBLIC_THIRDWEB_CLIENT_ID;
 
 if (!clientId) {
@@ -34,7 +33,8 @@ export const marketplaceContract = getContract({
     chain,
     // abi: marketplaceAbi,
 });
-export const renderIPFS = (uri) => {
+
+export const renderIPFS = (uri: string) => {
     return `${resolveScheme({
         client,
         uri,

@@ -6,9 +6,10 @@ import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 type NFTCardProps = {
-    id: number;
+    id: bigint;
     nft: {
         title: string;
+        image: string
         liked: number;
         price: number;
         chain: string;
@@ -25,7 +26,7 @@ const NFTCard = ({ id, nft, creator }: NFTCardProps) => {
         <View className="rounded-xl bg-gray-700 flex-1 max-w-[48%]">
             <TouchableOpacity onPress={() => router.push(`/nft-item/${id}`)}>
                 <Image
-                    source={images.nft}
+                    source={nft.image || images.nft}
                     className="w-full  h-[120px] rounded-t-xl"
                     resizeMode="cover"
                 />
